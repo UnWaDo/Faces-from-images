@@ -22,7 +22,7 @@ def get_filenames(path):
 
 def make_rect(coords, alpha):
     ratio = count_ratio(args['ratio'])  # TODO: put to some other place to enhance time
-    if alpha < 1:
+    if alpha < 0:
         return coords
 
     ver_dif = coords[2] - coords[0]
@@ -40,7 +40,7 @@ def get_face(full_image, coords, alpha=args['alpha']):
         img = full_image[top:bottom, left:right]
         return Image.fromarray(img)
     except ValueError:
-        get_face(full_image, coords, alpha - 0.1)
+        return get_face(full_image, coords, alpha - 0.1)
 
 
 im_paths = get_filenames(args['source_dir'])
@@ -61,8 +61,8 @@ for filename in im_paths:
         faces_on_image += 1
         faces_counter += 1
         face_image = get_face(image, face)
-        face_filename = filename.rsplit('.', 1)[0] + str(faces_on_image) + '.jpg'
-        face_image.save(os.path.join(args['source_dir'], face_filename))
+        face_filename = '{}_{}.jpg'.format(filename.rsplit('.', 1)[0], faces_on_image)
+        face_image.save(os.path.join(args['result_dir'], face_filename))
         print("\tFace {}: filename is {}".format(faces_on_image, face_filename))
 
     print("Totally {} faces on image. \n ---------------".format(faces_on_image))
