@@ -13,3 +13,5 @@ There are also two more optional arguments you may use: `--alpha` and `--ratio`.
 The information is also available by calling the program with `-h` attribute.
 
 > python main.py -h
+
+An example of the program results can be seen in folder [Faces](https://github.com/UnWaDo/Faces-from-images/tree/master/Faces) on git. Source images can be seen in folder [Images](https://github.com/UnWaDo/Faces-from-images/tree/master/Images). Source images were downloaded from [free stock photos](freerangestock.com). The quality of face recognition is fully dependent on [face_recognition](github.com/ageitgey/face_recognition), I didn't make any modifications to the part of face recognition. 
